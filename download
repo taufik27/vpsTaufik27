@@ -1,0 +1,52 @@
+{
+  "defaultEnv": "default",
+  "environments": {
+    "default": {
+      "machines": {
+        "dev-machine": {
+          "attributes": {
+            "memoryLimitBytes": "2147483648"
+          },
+          "servers": {
+            "tomcat8": {
+              "attributes": {},
+              "port": "8080",
+              "protocol": "http"
+            }
+          },
+          "volumes": {},
+          "installers": [
+            "org.eclipse.che.exec",
+            "org.eclipse.che.terminal",
+            "org.eclipse.che.ws-agent",
+            "org.eclipse.che.ls.java",
+            "com.redhat.bayesian.lsp",
+            "com.redhat.oc-login"
+          ],
+          "env": {}
+        }
+      },
+      "recipe": {
+        "type": "dockerimage",
+        "content": "quay.io/openshiftio/che-ubuntu_jdk8"
+      }
+    }
+  },
+  "projects": [],
+  "name": "TaufikQurrahman",
+  "attributes": {
+    "persistVolumes": "false",
+    "editor": ""
+  },
+  "commands": [
+    {
+      "commandLine": "mvn clean install -f ${current.project.path}",
+      "name": "build",
+      "attributes": {
+        "goal": "Build",
+        "previewUrl": ""
+      },
+      "type": "mvn"
+    }
+  ]
+}
